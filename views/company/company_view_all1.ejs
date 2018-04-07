@@ -5,6 +5,8 @@
 </head>
     <body>
         <h1>Companies</h1>
+        <a href="/company/add">Add New Company</a>
+        <br>
         <table border="1">
             <th>Name</th>
             <th>Actions</th>
@@ -16,7 +18,7 @@
                     </a>
                 </td>
                 <td>
-                    <a href="/company/edit/?company_id<%= companies[i].company_id %>">
+                    <a href="/company/edit/?company_id= <%= companies[i].company_id %>">
                         Edit
                     </a>
                 </td>

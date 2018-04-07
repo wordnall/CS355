@@ -29,4 +29,26 @@ router.get('/insert', function(req, res) {
     });
 });
 
+router.get('/edit', function(req, res) {
+    skill_dal.getinfo(req.query.skill_id, function(err, result) {
+        if(err){
+            console.log(err);
+            res.send(err);
+        }else {
+            res.render('skill/skillUpdate', {skill: result[0][0]});
+        }
+    });
+});
+
+router.get('/update', function(req, res) {
+    skill_dal.update(req.query, function(err, result) {
+        if(err) {
+            console.log(err);
+            res.send(err);
+        }else {
+            res.redirect(302, '/skill/all');
+        }
+    });
+});
+
 module.exports = router;

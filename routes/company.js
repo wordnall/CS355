@@ -48,4 +48,15 @@ router.get('/edit', function(req, res) {
     });
 });
 
+router.get('/update', function(req, res) {
+     company_dal.update(req.query, function(err, result) {
+        if(err) {
+            console.log(err);
+            res.send(err);
+        }else {
+            res.redirect(302, '/company/all');
+        }
+    });
+});
+
 module.exports = router;

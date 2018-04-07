@@ -47,7 +47,49 @@ exports.getinfo = function(company_id, callback) {
     var query = 'CALL company_getinfo(?)';
     var queryData = [company_id];
 
-    connection.query(query, queryData, function(err, result) {
+    connection.query(query, queryData, function (err, result) {
         callback(err, result);
+    });
+};
+
+var companyAddressInsert = function(company_id, addressIdArray, callback) {
+
+    var query = 'INSERT INTO company_address (company_id, address_id) VALUES ?';
+
+    var companyAddressData = [];
+
+    if(addressIdArray.constructor === Array) {
+        for (var i = 0; i < addressIdArray.length; i++) {
+            companyAddressData.push([company_id, addressIdArray[i]]);
+        }
+    } else {
+        companyAddressData.push([company_id, addressIdArray]);
+    }
+    connection.query(query, [companyAddressData], function(err, result) {
+        callback(err, result);
+    });
+};
+
+var companyAddressUpdate = function(company_id, addressIdArray, callback) {
+    var query = 'CALL company_address_delete(?)';
+
+    connection.query(query, company_id, function (err, result) {
+        if(err || addressIdArray === undefined) {
+            callback(err, result);
+        }else {
+            companyAddressInsert(company_id, addressIdArray, callback);
+        }
+    });
+};
+
+exports.update = function(params, callback) {
+    var query = 'UPDATE company SET company_name = ? WHERE company_id = ?';
+
+    var queryData = [params.company_name, params.company_id];
+
+    connection.query(query, queryData, function(err, result) {
+        companyAddressUpdate(params.company_id, params.address_id, function (err, result) {
+            callback(err, result);
+        });
     });
 };
