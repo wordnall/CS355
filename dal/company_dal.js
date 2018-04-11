@@ -5,7 +5,7 @@ var db = require('./db_connection.js');
 var connection = mysql.createConnection(db.config);
 
 exports.getAll = function(callback) {
-    var query = 'SELECT * FROM company;';
+    var query = 'CALL company_getall()';
 
     connection.query(query, function(err, result) {
         callback(err, result);

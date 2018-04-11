@@ -1,52 +1,51 @@
 var express = require('express');
 var router = express.Router();
-var skill_dal = require('../dal/skill_dal');
+var school_dal = require('../dal/school_dal');
 
 router.get('/all', function(req, res, next) {
-    skill_dal.getAll(function(err, result) {
+    school_dal.getAll(function(err, result) {
         if(err){
             console.log(err);
             res.send(err);
-        }else {
-            res.render('skill/skill_view_all', {skills: result[0]});
+        }else{
+            res.render('school/school_view_all', {schools: result[0]});
         }
     });
 });
 
 router.get('/add', function(req, res) {
-    res.render('skill/skill_add');
+    res.render('school/school_add');
 });
 
 router.get('/insert', function(req, res) {
-
-    skill_dal.insert(req.query, function(err, result) {
-        if(err) {
+    school_dal.insert(req.query, function(err, result) {
+        if(err){
             console.log(err);
             res.send(err);
-        } else {
-            res.redirect(302,'/skill/all');
+        }else{
+            res.redirect(302,'/school/all');
         }
     });
 });
 
 router.get('/edit', function(req, res) {
-    skill_dal.getinfo(req.query.skill_id, function(err, result) {
+    school_dal.getinfo(req.query.school_id, function(err, result){
         if(err){
             console.log(err);
             res.send(err);
-        }else {
-            res.render('skill/skillUpdate', {skill: result[0][0]});
+        }else{
+            res.render('school/schoolUpdate', {school: result[0][0]});
         }
     });
 });
 
 router.get('/update', function(req, res) {
-    skill_dal.update(req.query, function(err, result) {
-        if(err) {
+    school_dal.update(req.query, function(err, result){
+        if(err){
             console.log(err);
             res.send(err);
-        }else {
-            res.redirect(302, '/skill/all');
+        }else{
+            res.redirect(302, '/school/all');
         }
     });
 });

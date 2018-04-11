@@ -8,7 +8,7 @@ router.get('/all', function(req, res, next) {
             console.log(err);
             res.send(err);
         }else {
-            res.render('account/account_view_all', {account: result});
+            res.render('account/account_view_all', {account: result[0]});
         }
     });
 });

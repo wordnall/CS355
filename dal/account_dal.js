@@ -4,7 +4,7 @@ var db = require('../dal/db_connection.js');
 var connection = mysql.createConnection(db.config);
 
 exports.getAll = function(callback) {
-    var query = 'SELECT * FROM account;';
+    var query = 'CALL account_getall()';
 
     connection.query(query, function(err, result) {
         callback(err, result);

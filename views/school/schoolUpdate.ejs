@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>School - Add</title>
+    </head>
+    <body>
+        <h1>Add New School</h1>
+
+        <form action="/school/update" method="get">
+            <input type="hidden" id="school_id" name="school_id" value="<%= school.school_id%>">
+            School Name: <input id="school_name" name="school_name" value=""<%= school.school_name%>>
+            <br>
+            <input type="submit">
+        </form>
+    </body>
+</html>
