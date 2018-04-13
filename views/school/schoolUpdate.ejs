@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>School - Add</title>
+        <title>School - Update</title>
     </head>
     <body>
-        <h1>Add New School</h1>
+        <h1>Update School</h1>
 
         <form action="/school/update" method="get">
             <input type="hidden" id="school_id" name="school_id" value="<%= school.school_id%>">
-            School Name: <input id="school_name" name="school_name" value=""<%= school.school_name%>>
+
+            School Name: <input id="school_name" name="school_name" value="<%= school.school_name%>">
+            <br>
+            Address:
+            <br>
+            <select name="address_id">
+                <% for (var i=0; address_result.length > i; i++ ) {
+                    var selected = "";
+
+                    if(address_result[i].school_id != null) {
+                        selected = "selected";
+                    }
+                %>
+                <option value ="<%= address_result[i].address_id %>" <%= selected %>>
+                    <%= address_result[i].street + ', ' + address_result[i].zip_code %>
+                </option>
+
+                <% } %>
+            </select>
             <br>
             <input type="submit">
         </form>
