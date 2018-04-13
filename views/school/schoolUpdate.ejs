@@ -5,7 +5,6 @@
     </head>
     <body>
         <h1>Update School</h1>
-
         <form action="/school/update" method="get">
             <input type="hidden" id="school_id" name="school_id" value="<%= school.school_id%>">
 
@@ -24,7 +23,6 @@
                 <option value ="<%= address_result[i].address_id %>" <%= selected %>>
                     <%= address_result[i].street + ', ' + address_result[i].zip_code %>
                 </option>
-
                 <% } %>
             </select>
             <br>
