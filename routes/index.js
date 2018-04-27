@@ -10,7 +10,8 @@ router.get('/template_example', function(req, res, next) {
   res.render('template_example', {first_name: req.query.first_name, last_name: req.query.last_name, title:'CS355'})
 });
 //resume controller
-router.get('/resume', function(req, res, next) {
-  res.render(/*template name*/'resume_view', {first_name: req.query.first_name, last_name: req.query.last_name, major: req.query.major})
+/*router.get('/resume', function(req, res, next) {
+  res.render(/*template name*//*'resume_view', {first_name: req.query.first_name, last_name: req.query.last_name, major: req.query.major})
 });
+*/
 module.exports = router;

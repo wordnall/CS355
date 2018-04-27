@@ -12,6 +12,7 @@ var skill = require('./routes/skill');
 var account = require('./routes/account');
 var address = require('./routes/address');
 var school = require('./routes/school');
+var resume = require('./routes/resume');
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use('/skill', skill);
 app.use('/account', account);
 app.use('/address', address);
 app.use('/school', school);
+app.use('/resume', resume);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
