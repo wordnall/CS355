@@ -5,6 +5,25 @@
 </head>
 <body>
     <h1>Resumes</h1>
+    <% if(locals.was_successful) { %>
+        <div class="col-md-12">
+            <div id="message" class="alert alert-success col-md-4">
+                Resume ID <%= poop %> was successfully deleted.
+                <br>
+            </div>
+        </div>
+    <% }else { %>
+        <div class="col-md-12">
+            <div id="message" class="alert alert-danger col-md-4">
+                Failed to delete resume ID <%= poop %>.
+                <br>
+                <br>
+                <%= error %>
+                <br>
+            </div>
+        </div>
+    <% } %>
+
     <a href="/resume/add/selectuser">Create New Resume</a>
 <br>
 <table border="1">
@@ -17,7 +36,10 @@
         <td><%= resumes[i].first_name %></td>
         <td><%= resumes[i].last_name %></td>
         <td><%= resumes[i].resume_name %></td>
-        <td><a href="">Edit</a> <a href="">Delete</a></td>
+        <td>
+            <a href="/resume/edit/?resume_id=<%= resumes[i].resume_id %>">Edit</a>
+            <a href="/resume/delete/?resume_id=<%= resumes[i].resume_id%>">Delete</a>
+        </td>
     </tr>
     <% } %>
 </table>

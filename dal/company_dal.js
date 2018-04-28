@@ -37,7 +37,7 @@ exports.insert = function(params, callback) {
                 companyAddressData.push([company_id, params.address_id]);
             }
             connection.query(query, [companyAddressData], function(err, result) {
-                callback(err, result);
+                callback(err, company_id);
             });
         }
     });

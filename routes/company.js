@@ -27,12 +27,12 @@ router.get('/add', function(req, res) {
 });
 
 router.get('/insert', function(req, res) {
-    company_dal.insert(req.query, function(err, result) {
+    company_dal.insert(req.query, function(err, company_id) {
         if(err) {
             console.log(err);
             res.send(err);
         } else {
-            res.redirect(302,'/company/all');
+            res.redirect(302,'/company/edit?company_id=' + company_id);
         }
     });
 });
@@ -43,7 +43,7 @@ router.get('/edit', function(req, res) {
             console.log(err);
             res.send(err);
         }else {
-            res.render('company/companyUpdate', {company: result[0][0], address_result: result[1]});
+            res.render('company/companyUpdate', {company: result[0][0], address_result: result[1], was_successful: true});
         }
     });
 });

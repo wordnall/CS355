@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Company - Add</title>
+    <title>Company - Edit</title>
 </head>
 <body>
-<h1>Add New Company</h1>
+<h1>Edit Company</h1>
+
+<% if(locals.was_successful) { %>
+<div class="col-md-12">
+    <div id="message" class="alert alert-success col-md-4">
+        <%= company.company_name %> was successfully saved.
+    </div>
+</div>
+<% } %>
+
 <form action="/company/update" method="get">
     <input type="hidden" id="company_id" name="company_id" value = "<%= company.company_id %>">
 
