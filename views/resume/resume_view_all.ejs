@@ -5,25 +5,25 @@
 </head>
 <body>
     <h1>Resumes</h1>
-    <!-- <%# if(locals.was_successful) { %>
+     <% if(locals.was_successful) { %>
         <div class="col-md-12">
             <div id="message" class="alert alert-success col-md-4">
-                Resume ID <%#= resume_id %> was successfully deleted.
+                ResuResume ID <%= resume_id %> was successfully deleted.
                 <br>
             </div>
         </div>
-    <%# }else { %>
+    <% }else { %>
         <div class="col-md-12">
             <div id="message" class="alert alert-danger col-md-4">
-                Failed to delete resume ID <%#= resume_id %>.
+                Failed to delete resume ID <%= resume_id %>.
                 <br>
                 <br>
-                <%#= error %>
+                <%= error %>
                 <br>
             </div>
         </div>
-    <%# } %>
--->
+    <% } %>
+
     <a href="/resume/add/selectuser">Create New Resume</a>
 <br>
 <table border="1">

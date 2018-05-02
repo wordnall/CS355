@@ -65,7 +65,7 @@ router.get('/update', function(req, res){
 });
 
 router.get('/delete', function(req, res){
-   resume_dal.Delete(req.query.resume_id, function(err, result){
+   resume_dal.Delete(req.query.resume_id, function(err, resume_id){
        if(err){
            res.redirect(302, '/resume/all?resume_id=' + resume_id + '&was_successful=false');
        }else{

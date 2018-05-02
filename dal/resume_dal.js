@@ -305,7 +305,7 @@ exports.Delete = function(resume_id, callback){
 
     var queryData = [resume_id];
 
-    connection.query(query, queryData, function(err, result){
+    connection.query(query, queryData, function(err, result) {
         callback(err, resume_id);
     });
 };
