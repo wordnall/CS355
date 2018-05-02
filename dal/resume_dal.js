@@ -50,7 +50,7 @@ exports.update = function(params, callback) {
 
                         if (params.skill_id.constructor === Array) {
                             for (var i = 0; i < params.skill_id.length; i++) {
-                                resumeSkillDataData.push([params.resume_id, params.skill_id[i]]);
+                                resumeSkillData.push([params.resume_id, params.skill_id[i]]);
                             }
                         } else {
                             resumeSkillData.push([params.resume_id, params.skill_id]);
@@ -81,7 +81,7 @@ exports.update = function(params, callback) {
 
                             if (params.skill_id.constructor === Array) {
                                 for (var i = 0; i < params.skill_id.length; i++) {
-                                    resumeSkillDataData.push([params.resume_id, params.skill_id[i]]);
+                                    resumeSkillData.push([params.resume_id, params.skill_id[i]]);
                                 }
                             } else {
                                 resumeSkillData.push([params.resume_id, params.skill_id]);
@@ -117,7 +117,7 @@ exports.update = function(params, callback) {
 
                             if (params.skill_id.constructor === Array) {
                                 for (var i = 0; i < params.skill_id.length; i++) {
-                                    resumeSkillDataData.push([params.resume_id, params.skill_id[i]]);
+                                    resumeSkillData.push([params.resume_id, params.skill_id[i]]);
                                 }
                             } else {
                                 resumeSkillData.push([params.resume_id, params.skill_id]);
@@ -149,7 +149,7 @@ exports.update = function(params, callback) {
 
                                 if (params.skill_id.constructor === Array) {
                                     for (var i = 0; i < params.skill_id.length; i++) {
-                                        resumeSkillDataData.push([params.resume_id, params.skill_id[i]]);
+                                        resumeSkillData.push([params.resume_id, params.skill_id[i]]);
                                     }
                                 } else {
                                     resumeSkillData.push([params.resume_id, params.skill_id]);
@@ -284,7 +284,7 @@ var resume_id = result.insertId;
 
                             if (params.skill_id.constructor === Array) {
                                 for (var i = 0; i < params.skill_id.length; i++) {
-                                    resumeSkillDataData.push([resume_id, params.skill_id[i]]);
+                                    resumeSkillData.push([resume_id, params.skill_id[i]]);
                                 }
                             } else {
                                 resumeSkillData.push([resume_id, params.skill_id]);
