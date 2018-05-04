@@ -93,3 +93,11 @@ exports.update = function(params, callback) {
         });
     });
 };
+
+exports.Delete = function(company_id, callback) {
+    var query = 'CALL deleteCompanyAndRelations(?)';
+
+    connection.query(query, company_id, function(err, result) {
+        callback(err, company_id);
+    });
+};

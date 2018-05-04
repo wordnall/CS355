@@ -301,7 +301,7 @@ var resume_id = result.insertId;
 };
 
 exports.Delete = function(resume_id, callback){
-    var query = 'CALL deleteResumeAndRelations(?)'
+    var query = 'CALL deleteResumeAndRelations(?)';
 
     var queryData = [resume_id];
 

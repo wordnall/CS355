@@ -39,3 +39,11 @@ exports.update = function(params, callback) {
         callback(err, result);
     });
 };
+
+exports.Delete = function(skill_id, callback){
+    var query = 'CALL deleteSkillAndRelations(?)';
+
+    connection.query(query, skill_id, function(err, result) {
+        callback(err, skill_id);
+    });
+};

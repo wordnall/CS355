@@ -5,6 +5,26 @@
 </head>
     <body>
         <h1>Companies</h1>
+
+        <% if(locals.was_successful) { %>
+        <div class="col-md-12">
+            <div id="message" class="alert alert-success col-md-4">
+                Company ID <%= company_id %> was successfully deleted.
+                <br>
+            </div>
+        </div>
+        <% }else { %>
+        <div class="col-md-12">
+            <div id="message" class="alert alert-danger col-md-4">
+                Failed to delete company ID <%= company_id %>.
+                <br>
+                <br>
+                <%#= error %>
+                <br>
+            </div>
+        </div>
+        <% } %>
+
         <a href="/company/add">Add New Company</a>
         <br>
         <table border="1">
@@ -13,13 +33,16 @@
             <% for(var i = 0; i < companies.length; i++) { %>
             <tr>
                 <td>
-                    <a href="company/?company_id= <%= companies[i].company_id %>">
+                    <a href="company/?company_id=<%= companies[i].company_id %>">
                         <%= companies[i].company_name %>
                     </a>
                 </td>
                 <td>
-                    <a href="/company/edit/?company_id= <%= companies[i].company_id %>">
+                    <a href="/company/edit/?company_id=<%= companies[i].company_id %>">
                         Edit
+                    </a>
+                    <a href="/company/delete/?company_id=<%= companies[i].company_id %>">
+                        Delete
                     </a>
                 </td>
             </tr>

@@ -8,7 +8,7 @@ router.get('/all', function(req, res, next) {
             console.log(err);
             res.send(err);
         }else{
-            res.render('address/address_view_all', {addresses: result[0]});
+            res.render('address/address_view_all', {address_id: req.query.address_id, was_successful: req.query.was_successful, addresses: result[0]});
         }
     });
 });
@@ -49,4 +49,15 @@ router.get('/update', function(req, res) {
         }
     });
 });
+
+router.get('/delete', function(req, res) {
+    address_dal.Delete(req.query.address_id, function(err, address_id) {
+        if(err){
+            res.redirect(302, '/address/all?address_id=' + address_id + '&was_successful=false');
+        }else{
+            res.redirect(302, '/address/all?address_id=' + address_id + '&was_successful=true');
+        }
+    });
+});
+
 module.exports = router;

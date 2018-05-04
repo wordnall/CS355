@@ -5,7 +5,26 @@
 </head>
     <body>
         <h1>Accounts</h1>
-        <a href="account/add">Add New Account</a>
+        <% if(locals.was_successful) { %>
+        <div class="col-md-12">
+            <div id="message" class="alert alert-success col-md-4">
+                Account ID <%= account_id %> was successfully deleted.
+                <br>
+            </div>
+        </div>
+        <% }else { %>
+        <div class="col-md-12">
+            <div id="message" class="alert alert-danger col-md-4">
+                Failed to delete account ID <%= account_id %>.
+                <br>
+                <br>
+                <%#= error %>
+                <br>
+            </div>
+        </div>
+        <% } %>
+
+        <a href="/account/add">Add New Account</a>
         <br>
 
         <table border="1">
@@ -25,6 +44,9 @@
                 <td>
                     <a href="/account/edit/?account_id=<%= account[i].account_id %>">
                         Edit
+                    </a>
+                    <a href="/account/delete/?account_id=<%= account[i].account_id %>">
+                        Delete
                     </a>
                 </td>
             </tr>

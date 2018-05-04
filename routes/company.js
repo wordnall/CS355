@@ -10,7 +10,7 @@ router.get('/all', function(req,res,next) {
             console.log(err);
             res.send(err);
         }else {
-            res.render('company/company_view_all1', {companies: result[0]});
+            res.render('company/company_view_all1', {company_id: req.query.company_id, was_successful: req.query.was_successful, companies: result[0]});
         }
     });
 });
@@ -55,6 +55,16 @@ router.get('/update', function(req, res) {
             res.send(err);
         }else {
             res.redirect(302, '/company/all');
+        }
+    });
+});
+
+router.get('/delete', function(req, res) {
+    company_dal.Delete(req.query.company_id, function(err, company_id) {
+        if(err){
+            res.redirect(302, '/company/all?company_id=' + company_id + '&was_successful=false');
+        }else{
+            res.redirect(302, '/company/all?company_id=' + company_id + '&was_successful=true');
         }
     });
 });

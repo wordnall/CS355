@@ -3,27 +3,50 @@
 <head>
     <title>School - View All</title>
 </head>
-<boddy>
-    <h1>Schools</h1>
-<a href="/school/add">Add New School</a>
-    <br>
-    <table border ="1">
-        <th>ID</th>
-        <th>Name</th>
-        <th>Actions</th>
+    <body>
+        <h1>Schools</h1>
 
-
-        <% for(var i = 0; i < schools.length; i++) { %>
-        <tr>
-            <td><%= schools[i].school_id %></td>
-            <td><%= schools[i].school_name %></td>
-            <td>
-                <a href="/school/edit/?school_id=<%= schools[i].school_id%>">
-                    Edit
-                </a>
-            </td>
-        </tr>
+        <% if(locals.was_successful) { %>
+        <div class="col-md-12">
+            <div id="message" class="alert alert-success col-md-4">
+                School ID <%= school_id %> was successfully deleted.
+                <br>
+            </div>
+        </div>
+        <% }else { %>
+        <div class="col-md-12">
+            <div id="message" class="alert alert-danger col-md-4">
+                Failed to delete school ID <%= school_id %>.
+                <br>
+                <br>
+                <%#= error %>
+                <br>
+            </div>
+        </div>
         <% } %>
-    </table>
-</boddy>
+
+        <a href="/school/add">Add New School</a>
+            <br>
+            <table border ="1">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+
+
+                <% for(var i = 0; i < schools.length; i++) { %>
+                <tr>
+                    <td><%= schools[i].school_id %></td>
+                    <td><%= schools[i].school_name %></td>
+                    <td>
+                        <a href="/school/edit/?school_id=<%= schools[i].school_id%>">
+                            Edit
+                        </a>
+                        <a href="/school/delete/?school_id=<%= schools[i].school_id%>">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+                <% } %>
+            </table>
+    </body>
 </html>

@@ -39,3 +39,11 @@ exports.update = function(params, callback) {
         callback(err, result);
     });
 };
+
+exports.Delete = function(account_id, callback) {
+    var query = 'CALL deleteAccountAndRelations(?)';
+
+    connection.query(query, account_id, function(err, result) {
+        callback(err, account_id);
+    });
+};

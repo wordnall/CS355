@@ -5,10 +5,11 @@
 </head>
 <body>
     <h1>Resumes</h1>
+
      <% if(locals.was_successful) { %>
         <div class="col-md-12">
             <div id="message" class="alert alert-success col-md-4">
-                ResuResume ID <%= resume_id %> was successfully deleted.
+                Resume ID <%= resume_id %> was successfully deleted.
                 <br>
             </div>
         </div>
@@ -18,7 +19,7 @@
                 Failed to delete resume ID <%= resume_id %>.
                 <br>
                 <br>
-                <%= error %>
+                <%#= error %>
                 <br>
             </div>
         </div>

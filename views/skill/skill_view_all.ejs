@@ -4,27 +4,50 @@
     <title>Skill - View All</title>
 </head>
 <body>
-<h1>Skills</h1>
-<a href="/skill/add">Add New Skill</a>
-<br>
-<table border="1">
-    <th>ID</th>
-    <th>Skill Name</th>
-    <th>Description</th>
-    <th>Actions</th>
+    <h1>Skills</h1>
 
-    <% for(var i = 0; i < skills.length; i++){ %>
-    <tr>
-        <td><%= skills[i].skill_id %></td>
-        <td><%= skills[i].skill_name %></td>
-        <td><%= skills[i].description %></td>
-        <td>
-            <a href="/skill/edit/?skill_id=<%= skills[i].skill_id %>">
-                Edit
-            </a>
-        </td>
-    </tr>
+    <% if(locals.was_successful) { %>
+    <div class="col-md-12">
+        <div id="message" class="alert alert-success col-md-4">
+            Skill ID <%= skill_id %> was successfully deleted.
+            <br>
+        </div>
+    </div>
+    <% }else { %>
+    <div class="col-md-12">
+        <div id="message" class="alert alert-danger col-md-4">
+            Failed to delete skill ID <%= skill_id %>.
+            <br>
+            <br>
+            <%#= error %>
+            <br>
+        </div>
+    </div>
     <% } %>
-</table>
+
+    <a href="/skill/add">Add New Skill</a>
+    <br>
+    <table border="1">
+        <th>ID</th>
+        <th>Skill Name</th>
+        <th>Description</th>
+        <th>Actions</th>
+
+        <% for(var i = 0; i < skills.length; i++){ %>
+        <tr>
+            <td><%= skills[i].skill_id %></td>
+            <td><%= skills[i].skill_name %></td>
+            <td><%= skills[i].description %></td>
+            <td>
+                <a href="/skill/edit/?skill_id=<%= skills[i].skill_id %>">
+                    Edit
+                </a>
+                <a href="/skill/delete/?skill_id=<%= skills[i].skill_id %>">
+                    Delete
+                </a>
+            </td>
+        </tr>
+        <% } %>
+    </table>
 </body>
 </html>

@@ -38,3 +38,11 @@ exports.update = function(params, callback) {
         callback(err, result);
     });
 };
+
+exports.Delete = function(address_id, callback) {
+    var query = 'CALL deleteAddressAndRelations(?)';
+
+    connection.query(query, address_id, function(err, result) {
+        callback(err, address_id);
+    });
+};

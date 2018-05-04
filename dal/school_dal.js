@@ -40,3 +40,11 @@ exports.update = function(params, callback){
         callback(err, result);
     });
 };
+
+exports.Delete = function(school_id, callback) {
+    var query = 'CALL deleteSchoolAndRelations(?)';
+
+    connection.query(query, school_id, function(err, result){
+        callback(err, school_id);
+    });
+};
